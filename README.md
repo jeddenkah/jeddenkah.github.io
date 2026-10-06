@@ -1,47 +1,111 @@
-# Svelte + TS + Vite
+# Ifen Faridian Rahmadan — Web Portfolio
 
-This template should help get you started developing with Svelte and TypeScript in Vite.
+Web portofolio personal interaktif untuk **Ifen Faridian Rahmadan** (Expert Industrial Engineer & Fullstack System Integrator), dibangun menggunakan **Svelte 5**, **Tailwind CSS v4**, **TypeScript**, dan **Vite**.
 
-## Recommended IDE Setup
+![OG Preview Banner](./public/og-image.svg)
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
+---
 
-## Need an official Svelte framework?
+## 🛠️ Tech Stack & Arsitektur
 
-Check out [SvelteKit](https://github.com/sveltejs/kit#readme), which is also powered by Vite. Deploy anywhere with its serverless-first approach and adapt to various platforms, with out of the box support for TypeScript, SCSS, and Less, and easily-added support for mdsvex, GraphQL, PostCSS, Tailwind CSS, and more.
+- **Framework**: Svelte 5 (`@sveltejs/vite-plugin-svelte`)
+- **Styling**: Tailwind CSS v4 (`@tailwindcss/vite` & CSS Custom Properties)
+- **Bahasa**: TypeScript (`strict` mode)
+- **Bundler**: Vite 6+
+- **Deploy**: GitHub Actions CI/CD ke GitHub Pages (`github.io`)
 
-## Technical considerations
+---
 
-**Why use this over SvelteKit?**
+## 💻 Cara Menjalankan Aplikasi Secara Lokal
 
-- It brings its own routing solution which might not be preferable for some users.
-- It is first and foremost a framework that just happens to use Vite under the hood, not a Vite app.
+### Prasyarat
+- **Node.js**: v18.0.0 atau lebih baru (Disarankan Node 20 LTS)
+- **npm**: v9.0.0 atau lebih baru
 
-This template contains as little as possible to get started with Vite + TypeScript + Svelte, while taking into account the developer experience with regards to HMR and intellisense. It demonstrates capabilities on par with the other `create-vite` templates and is a good starting point for beginners dipping their toes into a Vite + Svelte project.
+### Langkah-langkah
 
-Should you later need the extended capabilities and extensibility provided by SvelteKit, the template has been structured similarly to SvelteKit so that it is easy to migrate.
+1. **Clone Repository**:
+   ```bash
+   git clone https://github.com/jeddenkah/portfolio-web.git
+   cd portfolio-web
+   ```
 
-**Why `global.d.ts` instead of `compilerOptions.types` inside `jsconfig.json` or `tsconfig.json`?**
+2. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
 
-Setting `compilerOptions.types` shuts out all other types not explicitly listed in the configuration. Using triple-slash references keeps the default TypeScript setting of accepting type information from the entire workspace, while also adding `svelte` and `vite/client` type information.
+3. **Jalankan Server Development**:
+   ```bash
+   npm run dev
+   ```
+   Buka browser di `http://localhost:5173` untuk melihat tampilan portofolio secara *live-reload*.
 
-**Why include `.vscode/extensions.json`?**
+4. **Pemeriksaan Tipe & Svelte Diagnostic**:
+   ```bash
+   npm run check
+   ```
 
-Other templates indirectly recommend extensions via the README, but this file allows VS Code to prompt the user to install the recommended extension upon opening the project.
+5. **Build untuk Produksi**:
+   ```bash
+   npm run build
+   ```
+   Hasil build siap saji akan dibuat di folder `dist/`.
 
-**Why enable `allowJs` in the TS template?**
+6. **Preview Production Build**:
+   ```bash
+   npm run preview
+   ```
 
-While `allowJs: false` would indeed prevent the use of `.js` files in the project, it does not prevent the use of JavaScript syntax in `.svelte` files. In addition, it would force `checkJs: false`, bringing the worst of both worlds: not being able to guarantee the entire codebase is TypeScript, and also having worse typechecking for the existing JavaScript. In addition, there are valid use cases in which a mixed codebase may be relevant.
+---
 
-**Why is HMR not preserving my local component state?**
+## 🚀 Cara Setting GitHub Pages agar Langsung Live (github.io)
 
-HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/vite-plugin-svelte` due to its often surprising behavior. You can read the details [here](https://github.com/rixo/svelte-hmr#svelte-hmr).
+Repository ini telah dilengkapi dengan **GitHub Actions Workflow** otomatis di `.github/workflows/deploy.yml`. Setiap kali Anda melakukan `git push` ke branch `main`, aplikasi akan otomatis di-build dan di-deploy.
 
-If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
+### Langkah Setting di Dashboard GitHub:
 
-```ts
-// store.ts
-// An extremely simple external store
-import { writable } from 'svelte/store'
-export default writable(0)
-```
+1. **Push Seluruh Kode ke Repository**:
+   ```bash
+   git add .
+   git commit -m "feat: complete portfolio & github pages setup"
+   git push origin main
+   ```
+
+2. **Buka Repository di GitHub**:
+   - Masuk ke tab **Settings** di bagian atas repository Anda.
+
+3. **Pilih Menu GitHub Pages**:
+   - Pada sidebar sebelah kiri, klik **Pages** (di bawah kelompok *Code and automation*).
+
+4. **Ubah Build Source ke GitHub Actions**:
+   - Pada opsi **Build and deployment** > **Source**:
+   - Ganti pilihan dari *Deploy from a branch* menjadi **`GitHub Actions`**.
+
+5. **Selesai! Workflow Otomatis Berjalan**:
+   - Buka tab **Actions** di repo Anda untuk melihat status build.
+   - Dalam 1-2 menit, situs Anda akan langsung live di alamat:
+     ```text
+     https://jeddenkah.github.io/portfolio-web/
+     ```
+
+---
+
+## 🔍 Fitur SEO & Optimasi Search Engine
+
+Portofolio ini sudah dioptimalkan agar ramah Search Engine (Google/Bing) dan pratinjau media sosial:
+
+- **Primary Meta Tags**: Meta title, description, keywords, & author.
+- **Open Graph (og:tags)**: Tampilan pratinjau banner kartu interaktif saat link dibagikan di LinkedIn, WhatsApp, Telegram, Discord, dan Facebook.
+- **Twitter Card**: `summary_large_image` support.
+- **Structured Data (JSON-LD)**: Schema.org `@graph` (`Person`, `WebSite`, `ProfilePage`) untuk Knowledge Graph Google.
+- **Indexing Files**:
+  - `public/robots.txt` (mengizinkan crawler)
+  - `public/sitemap.xml` (sitemap resmi)
+  - `public/og-image.svg` (banner 1200x630px)
+
+---
+
+## 📄 Lisensi & Hak Cipta
+
+Didesain & Dikembangkan oleh **Ifen Faridian Rahmadan** © 2026.
