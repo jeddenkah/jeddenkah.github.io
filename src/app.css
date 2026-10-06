@@ -1,0 +1,69 @@
+﻿@import "tailwindcss";
+
+@theme {
+  --color-paper-white: #ffffff;
+  --color-charcoal: #1f2025;
+  --color-ink: #222326;
+  --color-cloud-card: #ebf0f8;
+  --color-body-gray: #747679;
+  --color-signal-gold: #ffca00;
+  --color-coral-signal: #ffab94;
+  --color-recovery-green: #31ce01;
+  --color-metric-blue: #415eee;
+  --color-sleep-lilac: #b9a6ff;
+  --color-hero-sky: #d2e5ff;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+
+  --spacing-8: 8px;
+  --spacing-16: 16px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+  --spacing-40: 40px;
+  --spacing-48: 48px;
+  --spacing-80: 80px;
+  --spacing-96: 96px;
+  --spacing-160: 160px;
+
+  --radius-2xl: 16px;
+  --radius-3xl: 24px;
+  --radius-3xl-2: 32px;
+  --radius-full: 128px;
+  --radius-full-2: 9999px;
+
+  --shadow-md: rgba(0, 0, 0, 0.25) 0px 0px 16px -8px;
+  --shadow-subtle: rgb(255, 255, 255) 0px 1px 0px 0px inset, rgba(255, 255, 255, 0.25) 0px 0px 4px 0px inset;
+  --shadow-lg: rgb(255, 255, 255) 0px 0px 24px 0px inset;
+  --shadow-md-2: rgba(0, 0, 0, 0.15) 0px 2px 16px 0px;
+  --shadow-subtle-2: rgba(255, 255, 255, 0.36) 0px 1px 0px 0px inset;
+}
+
+:root {
+  --color-paper-white: #ffffff;
+  --color-charcoal: #1f2025;
+  --color-ink: #222326;
+  --color-cloud-card: #ebf0f8;
+  --color-body-gray: #747679;
+  --color-signal-gold: #ffca00;
+  --color-coral-signal: #ffab94;
+  --color-recovery-green: #31ce01;
+  --color-metric-blue: #415eee;
+  --color-sleep-lilac: #b9a6ff;
+  --color-hero-sky: #d2e5ff;
+  --gradient-hero-sky: linear-gradient(#d2e5ff, #fff9ee);
+}
+
+html, body {
+  background-color: var(--color-paper-white);
+  color: var(--color-ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
