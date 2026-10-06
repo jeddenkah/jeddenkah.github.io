@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jeddenkah.github.io/portfolio-web/sitemap.xml
+Sitemap: https://jeddenkah.github.io/sitemap.xml

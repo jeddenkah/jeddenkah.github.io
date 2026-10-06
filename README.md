@@ -86,7 +86,7 @@ Repository ini telah dilengkapi dengan **GitHub Actions Workflow** otomatis di `
    - Buka tab **Actions** di repo Anda untuk melihat status build.
    - Dalam 1-2 menit, situs Anda akan langsung live di alamat:
      ```text
-     https://jeddenkah.github.io/portfolio-web/
+     https://jeddenkah.github.io/
      ```
 
 ---
@@ -102,7 +102,7 @@ Portofolio ini sudah dioptimalkan agar ramah Search Engine (Google/Bing) dan pra
 - **Indexing Files**:
   - `public/robots.txt` (mengizinkan crawler)
   - `public/sitemap.xml` (sitemap resmi)
-  - `public/og-image.svg` (banner 1200x630px)
+  - `public/og-image.svg` (banner 1200x630px) Mengarah ke https://jeddenkah.github.io/
 
 ---
 
