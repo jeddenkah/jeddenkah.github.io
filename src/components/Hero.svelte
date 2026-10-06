@@ -1,30 +1,36 @@
 ﻿<script lang="ts">
   import { personalInfo, metricsSummary } from '../data/portfolio';
   import { reveal } from '../lib/reveal';
+  import CompanyLogo from './CompanyLogo.svelte';
 </script>
 
-<section id="overview" class="relative pt-36 pb-20 px-6 sm:px-10 lg:px-16 overflow-hidden bg-gradient-to-b from-[#d2e5ff]/50 via-[#f5f9ff]/70 to-[#ffffff] border-b border-[#ebf0f8]/80">
+<section id="overview" class="relative pt-36 pb-20 px-6 sm:px-10 lg:px-16 overflow-hidden bg-gradient-to-b from-[#d2e5ff]/50 via-[#f5f9ff]/70 to-[#ffffff] border-b border-[#ebf0f8]/80 bg-blueprint-grid">
   <!-- Subtle atmosphere glow -->
   <div class="absolute top-12 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-br from-[#d2e5ff] to-[#fff9ee] blur-3xl opacity-70 -z-10 rounded-full pointer-events-none"></div>
 
-  <div class="max-w-5xl mx-auto flex flex-col items-center text-center">
-    
-    <!-- Hero Status Pill / Laurel -->
-    <div 
+  <div class="max-w-5xl mx-auto flex flex-col items-center text-center relative z-10">
+
+    <!-- Hero Status Pill / Laurel with company & certification badges -->
+    <div
       use:reveal={{ delay: 0.1, y: 20 }}
-      class="inline-flex items-center gap-2 px-4 py-2 rounded-[9999px] bg-white/90 border border-[#ebf0f8] shadow-sm mb-6 backdrop-blur-xs transition-transform hover:scale-105 cursor-default"
+      class="inline-flex items-center gap-3 px-4 py-2 rounded-[9999px] bg-white/90 border border-[#ebf0f8] shadow-sm mb-6 backdrop-blur-xs transition-transform hover:scale-105 cursor-default"
     >
       <span class="flex h-2 w-2 relative">
         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--color-recovery-green)] opacity-75"></span>
         <span class="relative inline-flex rounded-full h-2 w-2 bg-[var(--color-recovery-green)]"></span>
       </span>
+      <div class="flex items-center gap-1.5">
+        <CompanyLogo name="Astra" size={18} />
+        <CompanyLogo name="Telkom University" size={18} />
+        <CompanyLogo name="BNSP" size={18} />
+      </div>
       <span class="text-xs font-semibold text-[var(--color-body-gray)] tracking-wide uppercase">
-        Industry 4.0 &bull; MES Specialist &bull; BNSP Data Scientist
+        PT Astra Otoparts &bull; Industry 4.0 MES &bull; BNSP Data Scientist
       </span>
     </div>
 
     <!-- Main Headline - SF Pro aesthetic, weight 600, -2.4px tracking -->
-    <h1 
+    <h1
       use:reveal={{ delay: 0.2, y: 25 }}
       class="text-4xl sm:text-6xl md:text-[76px] leading-[1.05] font-semibold text-[var(--color-ink)] tracking-[-2px] sm:tracking-[-2.4px] max-w-4xl mb-6"
     >
@@ -32,7 +38,7 @@
     </h1>
 
     <!-- Subtitle / Supporting copy -->
-    <p 
+    <p
       use:reveal={{ delay: 0.3, y: 25 }}
       class="text-lg sm:text-xl md:text-[22px] leading-[1.4] text-[var(--color-body-gray)] max-w-2xl font-normal mb-8"
     >
@@ -40,11 +46,11 @@
     </p>
 
     <!-- CTAs and Social Links -->
-    <div 
+    <div
       use:reveal={{ delay: 0.4, y: 20 }}
-      class="flex flex-wrap items-center justify-center gap-4 mb-8"
+      class="flex flex-wrap items-center justify-center gap-4 mb-10"
     >
-      <a 
+      <a
         href={`mailto:${personalInfo.email}`}
         class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-[128px] bg-[var(--color-charcoal)] text-[var(--color-cloud-card)] text-base font-medium hover:bg-black transition-all shadow-[0_4px_14px_rgba(31,32,37,0.25)] hover:scale-[1.03] active:scale-[0.98]"
       >
@@ -54,9 +60,9 @@
         <span>Get in Touch</span>
       </a>
 
-      <a 
-        href={personalInfo.linkedin} 
-        target="_blank" 
+      <a
+        href={personalInfo.linkedin}
+        target="_blank"
         rel="noreferrer"
         class="inline-flex items-center gap-2 px-6 py-3.5 rounded-[128px] bg-white border border-[var(--color-cloud-card)] text-[var(--color-ink)] text-base font-medium hover:border-gray-300 transition-all shadow-sm hover:scale-[1.03] active:scale-[0.98]"
       >
@@ -66,9 +72,9 @@
         <span>LinkedIn</span>
       </a>
 
-      <a 
-        href={personalInfo.github} 
-        target="_blank" 
+      <a
+        href={personalInfo.github}
+        target="_blank"
         rel="noreferrer"
         class="inline-flex items-center gap-2 px-6 py-3.5 rounded-[128px] bg-white border border-[var(--color-cloud-card)] text-[var(--color-ink)] text-base font-medium hover:border-gray-300 transition-all shadow-sm hover:scale-[1.03] active:scale-[0.98]"
       >
@@ -79,10 +85,30 @@
       </a>
     </div>
 
+    <!-- Live Telemetry Stats Strip -->
+    <div
+      use:reveal={{ delay: 0.5, y: 20 }}
+      class="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-4xl p-4 sm:p-5 rounded-[28px] bg-white/80 backdrop-blur-md border border-[#ebf0f8] shadow-sm mb-10"
+    >
+      {#each metricsSummary as metric}
+        <div class="flex flex-col items-center justify-center p-3 rounded-[20px] bg-[var(--color-cloud-card)]/50 border border-black/5 hover:bg-white transition-all hover:shadow-xs">
+          <span class="text-2xl sm:text-3xl font-bold tracking-tight mb-0.5" style="color: {metric.color};">
+            {metric.value}
+          </span>
+          <span class="text-xs font-semibold text-[var(--color-ink)] leading-tight">
+            {metric.label}
+          </span>
+          <span class="text-[10px] text-[var(--color-body-gray)] mt-0.5">
+            {metric.desc}
+          </span>
+        </div>
+      {/each}
+    </div>
+
     <!-- Rating / Verification strip -->
-    <div 
-      use:reveal={{ delay: 0.5, y: 15 }}
-      class="flex items-center gap-2 text-xs text-[var(--color-body-gray)] font-medium mb-16"
+    <div
+      use:reveal={{ delay: 0.6, y: 15 }}
+      class="flex items-center gap-2 text-xs text-[var(--color-body-gray)] font-medium mb-12"
     >
       <div class="flex text-[var(--color-signal-gold)]">
         {#each Array(5) as _}
@@ -91,7 +117,7 @@
           </svg>
         {/each}
       </div>
-      <span>Telkom University &bull; Lifetime Learner &bull; 4+ Years Experience</span>
+      <span>Telkom University Cum Laude &bull; 6+ Years Experience &bull; Smart Factory System Integrator</span>
     </div>
 
   </div>

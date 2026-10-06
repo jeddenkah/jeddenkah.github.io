@@ -1,26 +1,34 @@
 ﻿<script lang="ts">
   import { personalInfo } from '../data/portfolio';
   import { reveal } from '../lib/reveal';
+  import CompanyLogo from './CompanyLogo.svelte';
 </script>
 
-<footer id="contact" class="pt-24 pb-16 px-6 sm:px-10 lg:px-16 bg-white border-t border-[var(--color-cloud-card)]">
-  <div class="max-w-5xl mx-auto">
-    
-    <!-- Elevated CTA Card (DESIGN.md: Charcoal #1f2025 with Cloud Card #ebf0f8 text, safe margins & padding) -->
-    <div 
+<footer id="contact" class="pt-24 pb-16 px-6 sm:px-10 lg:px-16 bg-white border-t border-[var(--color-cloud-card)] relative overflow-hidden bg-blueprint-grid">
+  <div class="max-w-5xl mx-auto relative z-10">
+
+    <!-- Elevated CTA Card -->
+    <div
       use:reveal={{ delay: 0.1, y: 35 }}
-      class="p-8 sm:p-14 md:p-16 rounded-[40px] bg-[var(--color-charcoal)] text-[var(--color-cloud-card)] text-center relative overflow-hidden mb-20 shadow-[0_20px_50px_rgba(31,32,37,0.15)] transition-transform hover:scale-[1.01]"
+      class="p-8 sm:p-14 md:p-16 rounded-[40px] bg-[var(--color-charcoal)] text-[var(--color-cloud-card)] text-center relative overflow-hidden mb-20 shadow-[0_20px_50px_rgba(31,32,37,0.15)] transition-transform hover:scale-[1.01] bg-dot-matrix-white border border-white/10"
     >
-      
+
       <!-- Ambient light effect -->
       <div class="absolute -top-24 -right-24 w-80 h-80 bg-[var(--color-metric-blue)]/20 rounded-full blur-3xl pointer-events-none"></div>
       <div class="absolute -bottom-24 -left-24 w-80 h-80 bg-[var(--color-recovery-green)]/15 rounded-full blur-3xl pointer-events-none"></div>
 
       <div class="relative z-10 max-w-2xl mx-auto">
-        <span class="inline-block text-xs uppercase tracking-widest font-semibold text-[var(--color-cloud-card)]/70 mb-4">
+        <!-- Badges row -->
+        <div class="flex items-center justify-center gap-2 mb-6">
+          <CompanyLogo name="Astra" size={24} />
+          <CompanyLogo name="Telkom University" size={24} />
+          <CompanyLogo name="Bandung Techno Park" size={24} />
+        </div>
+
+        <span class="inline-block text-xs uppercase tracking-widest font-semibold text-[var(--color-cloud-card)]/70 mb-3">
           Ready for New Challenges
         </span>
-        
+
         <h2 class="text-3xl sm:text-5xl font-semibold text-white tracking-[-1.5px] leading-tight mb-6">
           Let's engineer your next digital manufacturing breakthrough.
         </h2>
@@ -30,19 +38,21 @@
         </p>
 
         <div class="flex flex-wrap items-center justify-center gap-4">
-          <!-- Primary CTA Button (128px radius, Cloud Card text) -->
-          <a 
+          <!-- Primary CTA Button -->
+          <a
             href={`mailto:${personalInfo.email}`}
             class="px-8 py-3.5 rounded-[128px] bg-white text-[var(--color-charcoal)] text-base font-semibold hover:bg-[var(--color-cloud-card)] transition-all shadow-md hover:scale-105 active:scale-95"
           >
             Email: {personalInfo.email}
           </a>
 
-          <a 
-            href={`tel:${personalInfo.phone}`}
+          <a
+            href={personalInfo.linkedin}
+            target="_blank"
+            rel="noreferrer"
             class="px-6 py-3.5 rounded-[128px] bg-white/10 text-white text-base font-medium hover:bg-white/20 transition-all border border-white/20 hover:scale-105 active:scale-95"
           >
-            {personalInfo.phone}
+            LinkedIn Profile
           </a>
         </div>
       </div>

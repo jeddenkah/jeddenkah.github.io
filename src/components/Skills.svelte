@@ -1,15 +1,21 @@
 ﻿<script lang="ts">
   import { education, certifications, organizations, techSkills } from '../data/portfolio';
   import { reveal } from '../lib/reveal';
+  import CompanyLogo from './CompanyLogo.svelte';
+  import TechIcon from './TechIcon.svelte';
 </script>
 
-<section id="skills" class="py-24 px-6 sm:px-10 lg:px-16 bg-white border-b border-[var(--color-cloud-card)]">
-  <div class="max-w-6xl mx-auto space-y-20">
-    
+<section id="skills" class="py-24 px-6 sm:px-10 lg:px-16 bg-white border-b border-[var(--color-cloud-card)] relative overflow-hidden bg-dot-matrix">
+  <!-- Ambient background glow -->
+  <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[700px] h-[300px] bg-gradient-to-b from-[#ebf0f8]/60 to-transparent blur-3xl pointer-events-none"></div>
+
+  <div class="max-w-6xl mx-auto space-y-20 relative z-10">
+
     <!-- Tech Stack Matrix -->
     <div>
       <div class="text-center max-w-2xl mx-auto mb-14" use:reveal={{ delay: 0.1, y: 25 }}>
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[9999px] bg-[var(--color-cloud-card)] text-xs font-semibold text-[var(--color-body-gray)] uppercase tracking-wider mb-3">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[9999px] bg-[var(--color-cloud-card)] text-xs font-semibold text-[var(--color-body-gray)] uppercase tracking-wider mb-3 shadow-xs border border-black/5">
+          <span class="w-2 h-2 rounded-full bg-[var(--color-metric-blue)]"></span>
           Fullstack & Industrial Ecosystem
         </div>
         <h2 class="text-3xl sm:text-5xl font-semibold text-[var(--color-ink)] tracking-[-1.5px] mb-4">
@@ -21,10 +27,29 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- AI/ML Knowledge -->
+        <div
+          use:reveal={{ delay: 0.05, y: 25 }}
+          class="p-7 rounded-[28px] bg-white/90 backdrop-blur-xs border border-[var(--color-cloud-card)] hover:border-[#b9a6ff]/40 transition-all duration-300 hover:shadow-md hover:-translate-y-1"
+        >
+          <div class="flex items-center gap-2.5 mb-5">
+            <span class="w-3.5 h-3.5 rounded-full bg-[#b9a6ff]"></span>
+            <h3 class="text-lg font-semibold text-[var(--color-ink)]">AI/ML Knowledge & Agents</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            {#each techSkills.aiMl as item}
+              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-cloud-card)] text-xs font-medium text-[var(--color-ink)] shadow-2xs transition-all hover:scale-105 hover:bg-white border border-transparent hover:border-black/5">
+                <TechIcon name={item} size={14} />
+                {item}
+              </span>
+            {/each}
+          </div>
+        </div>
+
         <!-- Backend -->
-        <div 
+        <div
           use:reveal={{ delay: 0.1, y: 25 }}
-          class="p-7 rounded-[28px] bg-[var(--color-cloud-card)] border border-transparent hover:border-black/5 transition-all duration-300 hover:shadow-md hover:-translate-y-1"
+          class="p-7 rounded-[28px] bg-white/90 backdrop-blur-xs border border-[var(--color-cloud-card)] hover:border-[var(--color-metric-blue)]/30 transition-all duration-300 hover:shadow-md hover:-translate-y-1"
         >
           <div class="flex items-center gap-2.5 mb-5">
             <span class="w-3.5 h-3.5 rounded-full bg-[var(--color-metric-blue)]"></span>
@@ -32,7 +57,8 @@
           </div>
           <div class="flex flex-wrap gap-2">
             {#each techSkills.backend as item}
-              <span class="px-3.5 py-1.5 rounded-full bg-white text-xs font-medium text-[var(--color-ink)] shadow-xs transition-transform hover:scale-105">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-cloud-card)] text-xs font-medium text-[var(--color-ink)] shadow-2xs transition-all hover:scale-105 hover:bg-white border border-transparent hover:border-black/5">
+                <TechIcon name={item} size={14} />
                 {item}
               </span>
             {/each}
@@ -40,9 +66,9 @@
         </div>
 
         <!-- Frontend -->
-        <div 
+        <div
           use:reveal={{ delay: 0.2, y: 25 }}
-          class="p-7 rounded-[28px] bg-[var(--color-cloud-card)] border border-transparent hover:border-black/5 transition-all duration-300 hover:shadow-md hover:-translate-y-1"
+          class="p-7 rounded-[28px] bg-white/90 backdrop-blur-xs border border-[var(--color-cloud-card)] hover:border-[var(--color-coral-signal)]/40 transition-all duration-300 hover:shadow-md hover:-translate-y-1"
         >
           <div class="flex items-center gap-2.5 mb-5">
             <span class="w-3.5 h-3.5 rounded-full bg-[var(--color-coral-signal)]"></span>
@@ -50,7 +76,8 @@
           </div>
           <div class="flex flex-wrap gap-2">
             {#each techSkills.frontend as item}
-              <span class="px-3.5 py-1.5 rounded-full bg-white text-xs font-medium text-[var(--color-ink)] shadow-xs transition-transform hover:scale-105">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-cloud-card)] text-xs font-medium text-[var(--color-ink)] shadow-2xs transition-all hover:scale-105 hover:bg-white border border-transparent hover:border-black/5">
+                <TechIcon name={item} size={14} />
                 {item}
               </span>
             {/each}
@@ -58,9 +85,9 @@
         </div>
 
         <!-- Languages -->
-        <div 
+        <div
           use:reveal={{ delay: 0.3, y: 25 }}
-          class="p-7 rounded-[28px] bg-[var(--color-cloud-card)] border border-transparent hover:border-black/5 transition-all duration-300 hover:shadow-md hover:-translate-y-1"
+          class="p-7 rounded-[28px] bg-white/90 backdrop-blur-xs border border-[var(--color-cloud-card)] hover:border-[var(--color-signal-gold)]/40 transition-all duration-300 hover:shadow-md hover:-translate-y-1"
         >
           <div class="flex items-center gap-2.5 mb-5">
             <span class="w-3.5 h-3.5 rounded-full bg-[var(--color-signal-gold)]"></span>
@@ -68,7 +95,8 @@
           </div>
           <div class="flex flex-wrap gap-2">
             {#each techSkills.languages as item}
-              <span class="px-3.5 py-1.5 rounded-full bg-white text-xs font-medium text-[var(--color-ink)] shadow-xs transition-transform hover:scale-105">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-cloud-card)] text-xs font-medium text-[var(--color-ink)] shadow-2xs transition-all hover:scale-105 hover:bg-white border border-transparent hover:border-black/5">
+                <TechIcon name={item} size={14} />
                 {item}
               </span>
             {/each}
@@ -76,9 +104,9 @@
         </div>
 
         <!-- Databases -->
-        <div 
+        <div
           use:reveal={{ delay: 0.4, y: 25 }}
-          class="p-7 rounded-[28px] bg-[var(--color-cloud-card)] border border-transparent hover:border-black/5 transition-all duration-300 hover:shadow-md hover:-translate-y-1"
+          class="p-7 rounded-[28px] bg-white/90 backdrop-blur-xs border border-[var(--color-cloud-card)] hover:border-[var(--color-recovery-green)]/40 transition-all duration-300 hover:shadow-md hover:-translate-y-1"
         >
           <div class="flex items-center gap-2.5 mb-5">
             <span class="w-3.5 h-3.5 rounded-full bg-[var(--color-recovery-green)]"></span>
@@ -86,7 +114,8 @@
           </div>
           <div class="flex flex-wrap gap-2">
             {#each techSkills.databases as item}
-              <span class="px-3.5 py-1.5 rounded-full bg-white text-xs font-medium text-[var(--color-ink)] shadow-xs transition-transform hover:scale-105">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-cloud-card)] text-xs font-medium text-[var(--color-ink)] shadow-2xs transition-all hover:scale-105 hover:bg-white border border-transparent hover:border-black/5">
+                <TechIcon name={item} size={14} />
                 {item}
               </span>
             {/each}
@@ -94,17 +123,18 @@
         </div>
 
         <!-- DevOps & IoT -->
-        <div 
+        <div
           use:reveal={{ delay: 0.5, y: 25 }}
-          class="p-7 rounded-[28px] bg-[var(--color-cloud-card)] md:col-span-2 border border-transparent hover:border-black/5 transition-all duration-300 hover:shadow-md hover:-translate-y-1"
+          class="p-7 rounded-[28px] bg-white/90 backdrop-blur-xs border border-[var(--color-cloud-card)] hover:border-[var(--color-sleep-lilac)]/40 transition-all duration-300 hover:shadow-md hover:-translate-y-1"
         >
           <div class="flex items-center gap-2.5 mb-5">
             <span class="w-3.5 h-3.5 rounded-full bg-[var(--color-sleep-lilac)]"></span>
-            <h3 class="text-lg font-semibold text-[var(--color-ink)]">DevOps, Industrial IoT & OT Integration</h3>
+            <h3 class="text-lg font-semibold text-[var(--color-ink)]">DevOps, Industrial IoT & OT</h3>
           </div>
           <div class="flex flex-wrap gap-2">
             {#each techSkills.devopsIoT as item}
-              <span class="px-3.5 py-1.5 rounded-full bg-white text-xs font-medium text-[var(--color-ink)] shadow-xs transition-transform hover:scale-105">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-cloud-card)] text-xs font-medium text-[var(--color-ink)] shadow-2xs transition-all hover:scale-105 hover:bg-white border border-transparent hover:border-black/5">
+                <TechIcon name={item} size={14} />
                 {item}
               </span>
             {/each}
@@ -113,35 +143,42 @@
       </div>
     </div>
 
-    <!-- Education & Certifications Row with safe margin and card gaps -->
+    <!-- Education & Certifications Row -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 pt-10 border-t border-[var(--color-cloud-card)]">
-      
+
       <!-- Education Card -->
-      <div 
+      <div
         use:reveal={{ delay: 0.2, y: 30 }}
-        class="p-8 sm:p-10 rounded-[36px] bg-[var(--color-cloud-card)] flex flex-col justify-between border border-transparent hover:border-black/5 transition-all duration-300 hover:shadow-md"
+        class="p-8 sm:p-10 rounded-[36px] bg-white/90 backdrop-blur-md flex flex-col justify-between border border-[var(--color-cloud-card)] hover:border-black/10 transition-all duration-300 hover:shadow-md"
       >
         <div>
-          <span class="text-xs font-bold uppercase tracking-wider text-[var(--color-body-gray)]">Education</span>
-          <h3 class="text-2xl sm:text-3xl font-semibold text-[var(--color-ink)] mt-1 mb-2">
-            {education.institution}
-          </h3>
+          <div class="flex items-start justify-between gap-4 mb-4">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-[var(--color-body-gray)]">Education</span>
+              <h3 class="text-2xl sm:text-3xl font-semibold text-[var(--color-ink)] mt-1 mb-1">
+                {education.institution}
+              </h3>
+            </div>
+            <CompanyLogo name={education.institution} size={48} class="shadow-sm" />
+          </div>
+
           <div class="flex items-center gap-3 mb-4">
             <span class="text-base font-medium text-[var(--color-ink)]">{education.degree}</span>
-            <span class="text-xs px-3 py-1 rounded-full bg-white font-semibold text-[var(--color-recovery-green)] border border-black/5 shadow-xs">
+            <span class="text-xs px-3 py-1 rounded-full bg-[var(--color-cloud-card)] font-bold text-[var(--color-recovery-green)] border border-black/5 shadow-2xs">
               GPA {education.gpa}
             </span>
           </div>
           <p class="text-xs text-[var(--color-body-gray)] mb-6">{education.period} &bull; {education.location}</p>
 
-          <div class="p-5 rounded-[24px] bg-white/90 border border-white mb-6 shadow-xs">
+          <div class="p-5 rounded-[24px] bg-[var(--color-cloud-card)]/60 border border-black/5 mb-6 shadow-2xs">
             <span class="text-xs font-semibold text-[var(--color-ink)] block mb-1.5">Undergraduate Thesis / Final Project:</span>
             <p class="text-xs text-[var(--color-body-gray)] leading-relaxed mb-3.5">
               {education.thesis.title}
             </p>
             <div class="flex flex-wrap gap-1.5">
               {#each education.thesis.stack as st}
-                <span class="px-2.5 py-1 rounded-md bg-[var(--color-cloud-card)] text-[10px] font-semibold text-[var(--color-ink)]">
+                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-white text-[10px] font-semibold text-[var(--color-ink)] shadow-2xs">
+                  <TechIcon name={st} size={11} />
                   {st}
                 </span>
               {/each}
@@ -167,21 +204,24 @@
       <!-- Certifications & Leadership -->
       <div class="space-y-8">
         <!-- Certifications -->
-        <div 
+        <div
           use:reveal={{ delay: 0.3, y: 30 }}
-          class="p-8 sm:p-9 rounded-[36px] bg-[var(--color-cloud-card)] border border-transparent hover:border-black/5 transition-all duration-300 hover:shadow-md"
+          class="p-8 sm:p-9 rounded-[36px] bg-white/90 backdrop-blur-md border border-[var(--color-cloud-card)] hover:border-black/10 transition-all duration-300 hover:shadow-md"
         >
           <span class="text-xs font-bold uppercase tracking-wider text-[var(--color-body-gray)] block mb-5">
             Professional Certifications
           </span>
           <div class="space-y-3.5">
             {#each certifications as cert}
-              <div class="p-4 rounded-[20px] bg-white/90 border border-white flex items-center justify-between shadow-xs transition-transform hover:scale-[1.02]">
-                <div>
-                  <h4 class="text-sm font-semibold text-[var(--color-ink)]">{cert.name}</h4>
-                  <span class="text-xs text-[var(--color-body-gray)]">{cert.issuer} &bull; {cert.category}</span>
+              <div class="p-4 rounded-[20px] bg-[var(--color-cloud-card)]/50 border border-black/5 flex items-center justify-between shadow-2xs transition-all hover:scale-[1.01] hover:bg-white">
+                <div class="flex items-center gap-3.5">
+                  <CompanyLogo name={cert.issuer} size={36} class="shadow-2xs" />
+                  <div>
+                    <h4 class="text-sm font-semibold text-[var(--color-ink)]">{cert.name}</h4>
+                    <span class="text-xs text-[var(--color-body-gray)]">{cert.issuer} &bull; {cert.category}</span>
+                  </div>
                 </div>
-                <span class="text-xs font-bold text-[var(--color-ink)] px-3 py-1 rounded-full bg-[var(--color-cloud-card)]">
+                <span class="text-xs font-bold text-[var(--color-ink)] px-3 py-1 rounded-full bg-white border border-black/5">
                   {cert.year}
                 </span>
               </div>
@@ -190,16 +230,16 @@
         </div>
 
         <!-- Leadership & Organizations -->
-        <div 
+        <div
           use:reveal={{ delay: 0.4, y: 30 }}
-          class="p-8 sm:p-9 rounded-[36px] bg-[var(--color-cloud-card)] border border-transparent hover:border-black/5 transition-all duration-300 hover:shadow-md"
+          class="p-8 sm:p-9 rounded-[36px] bg-white/90 backdrop-blur-md border border-[var(--color-cloud-card)] hover:border-black/10 transition-all duration-300 hover:shadow-md"
         >
           <span class="text-xs font-bold uppercase tracking-wider text-[var(--color-body-gray)] block mb-5">
             Organizational Leadership
           </span>
           <div class="space-y-3.5">
             {#each organizations as org}
-              <div class="p-4 rounded-[20px] bg-white/90 border border-white shadow-xs transition-transform hover:scale-[1.02]">
+              <div class="p-4 rounded-[20px] bg-[var(--color-cloud-card)]/50 border border-black/5 shadow-2xs transition-all hover:scale-[1.01] hover:bg-white">
                 <div class="flex items-center justify-between mb-1">
                   <h4 class="text-sm font-semibold text-[var(--color-ink)]">{org.role}</h4>
                   <span class="text-[11px] text-[var(--color-body-gray)]">{org.period}</span>
